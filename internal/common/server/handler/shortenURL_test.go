@@ -17,6 +17,7 @@ func TestShortenURL(t *testing.T) {
 	flag.CommandLine = flag.NewFlagSet(os.Args[0], flag.ExitOnError)
 	appConfig := config.AppConfig{}
 	appConfig.InitAppConfig()
+
 	var testVault = make(map[string]string)
 	type want struct {
 		code     int
@@ -53,7 +54,6 @@ func TestShortenURL(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		test := test
 		t.Run(test.name, func(t *testing.T) {
 			w := httptest.NewRecorder()
 			с, _ := gin.CreateTestContext(w)
